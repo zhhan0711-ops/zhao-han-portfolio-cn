@@ -14,6 +14,8 @@
 
 独立完成的智能合约发布风险与审查工作台。使用 Next.js、FastAPI、PostgreSQL、OpenAI structured output、Solidity、Hardhat 与 ethers.js，实现源码风险信号、权限与代理分析、版本差异审查，以及 Sepolia 哈希登记流程。
 
+- 开源仓库：[zhhan0711-ops/chaintrust](https://github.com/zhhan0711-ops/chaintrust)
+
 ### FoodShare
 
 Django 全栈食谱社区与 AI Chef 团队项目，覆盖认证授权、内容发布、REST API、社区互动，以及 AWS EC2、Nginx、uWSGI、HTTPS 与 systemd 部署验证。
@@ -88,7 +90,7 @@ npx serve dist
 
 - LinkedIn 公开主页
 - StyleSphere 可公开的真实界面截图
-- ChainTrust 公开源码仓库、Sepolia 合约地址与在线 Demo
+- ChainTrust Sepolia 合约地址与在线 Demo
 - 经授权后可公开的团队项目代码或提交证据
 
 
