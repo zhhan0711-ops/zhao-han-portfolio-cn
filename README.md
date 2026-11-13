@@ -14,7 +14,7 @@
 | Contact | 邮件、简历和项目入口 |
 | 项目案例页 | 背景、职责、技术栈、功能、架构、难点、媒体与链接 |
 
-项目案例位于 dist/projects/，包含 FoodShare、StyleSphere、ReqTest Agent 和个人项目规划。
+项目案例位于 dist/projects/。ChainTrust 作为重点个人项目排在首位，其后为 StyleSphere、ReqTest Agent 和 FoodShare 团队项目。
 
 ## 视觉方向
 
@@ -108,7 +108,7 @@ npx serve dist
 - 不从学校团队仓库复制私有源码到本作品集仓库。
 - 当前作品集只引用经过筛选的图片和公开层级的项目说明。
 - StyleSphere 页面明确说明支付为 SIMULATED，不声称存在真实扣款。
-- 当前附件中没有可验证的区块链实现，所以该部分标为待补材料。
+- ChainTrust 案例仅依据可检查的本地源码与文档描述；不会提交项目密钥、RPC URL、钱包私钥或 `.env` 文件。
 - 原始简历未直接加入仓库，避免无意公开电话号码。
 
 ## 仍需补充的材料
@@ -117,13 +117,13 @@ npx serve dist
 - LinkedIn URL。
 - 经过隐私处理的 PDF 简历。
 - StyleSphere 的真实产品截图（如可公开）。
-- 独立个人项目的真实产品截图（项目完成后）。
+- ChainTrust 的真实产品截图（当前案例使用基于源码整理的系统流程图）。
 - 每个项目 60–90 秒 Demo 视频。
 - FoodShare 最终 AWS / Nginx / uWSGI / HTTPS 运行证据。
 - StyleSphere 区块链模块的代码位置、合约、交易流程、测试和个人提交证据。
 - ReqTest 中你的具体提交、模块、PR 或团队贡献说明。
 - 可公开的团队项目仓库或经过授权的代码样例。
-- 一个独立个人项目的选题、目标用户、仓库和上线地址。
+- ChainTrust 的公开 GitHub 仓库、Sepolia 合约地址和上线 Demo。
 
 ## 目录结构
 

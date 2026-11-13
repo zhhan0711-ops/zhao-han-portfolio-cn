@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ChainTrust 智能合约发布风险与审查工作台个人项目案例。">
+  <title>ChainTrust 项目案例｜赵涵</title><link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body data-page="case" data-root=".." id="top"><a class="skip-link" href="#main">跳到主要内容</a><div data-site-header></div><main id="main">
+<section class="case-hero"><div class="container"><div class="case-breadcrumb"><a href="../projects.html">Projects</a> / ChainTrust</div><p class="kicker reveal" style="margin-top:30px">Flagship · Independent Full-stack / AI / Web3</p><h1 class="reveal">ChainTrust：让智能合约发布审查从“看起来没问题”走向可追溯证据</h1><p class="case-summary reveal">面向智能合约开发者与安全评审者的发布风险工作台。系统从 Solidity 源码或 Sepolia 合约地址提取风险信号，生成有证据边界的 Release Risk Brief，并将源码与简报哈希登记到测试网，形成可验证的审查记录。</p><div class="case-meta reveal"><div><span>项目类型</span><strong>独立个人项目</strong></div><div><span>角色</span><strong>产品 / 全栈 / AI / 合约</strong></div><div><span>当前状态</span><strong>本地可运行原型</strong></div><div><span>技术栈</span><strong>Next.js · FastAPI · Solidity</strong></div></div></div></section>
+
+<div class="container case-cover chaintrust-cover reveal" role="img" aria-label="ChainTrust 从源码与链上数据生成风险简报并登记哈希的系统流程">
+  <div class="ct-cover-top"><span>CHAINTRUST / RELEASE INTELLIGENCE</span><span>SEPOLIA · EVIDENCE-AWARE</span></div>
+  <div class="ct-cover-grid"><div><small>01 / INPUT</small><strong>Solidity Source<br>Sepolia Address</strong></div><i>→</i><div><small>02 / ANALYZE</small><strong>Static Signals<br>Privilege Surface</strong></div><i>→</i><div><small>03 / REVIEW</small><strong>Release Risk Brief<br>Change Review</strong></div></div>
+  <div class="ct-cover-registry"><code>source_hash</code><span>+</span><code>report_hash</code><span>→</span><b>AnalysisRegistry / Sepolia</b></div>
+  <div class="case-cover-caption"><span>系统流程示意（依据项目源码整理）</span><span>独立设计与实现</span></div>
+</div>
+
+<section class="section-tight"><div class="container page-grid"><article class="prose reveal">
+  <h2>项目背景与目标</h2><p>智能合约发布前的判断往往散落在源码检查、链上浏览器、人工评审记录和聊天讨论中。ChainTrust 把这些环节组织成一个可重复的工程流程：输入源码或测试网地址，提取可定位的风险证据，生成结构化审查简报，再用哈希记录证明某份源码与某次审查结果之间的对应关系。</p><div class="notice"><strong>产品边界：</strong>ChainTrust 是工程审查辅助工具，不提供“合约安全”保证，也不能替代专业安全审计。链上能力限定在 Sepolia 测试网；未配置 RPC 或 Explorer 时，系统明确显示数据不可用或使用标记为 Sandbox 的样例数据。</div>
+
+  <h2>我的个人职责</h2><div class="scope-split"><div class="scope-card mine"><h3>独立完成</h3><ul><li>定义目标用户、核心审查流程与安全声明边界。</li><li>设计 Next.js、FastAPI、PostgreSQL 与 Sepolia 的全栈架构。</li><li>实现 Solidity 静态规则、权限面分析、代理检测与版本差异审查。</li><li>实现 OpenAI 结构化风险简报与无密钥时的确定性降级路径。</li><li>实现钱包连接、哈希生成与 AnalysisRegistry 测试网登记合约。</li><li>编写 API、规则、源码绑定和 Solidity 合约测试用例。</li></ul></div><div class="scope-card"><h3>刻意控制的范围</h3><ul><li>只把发现描述为风险信号，不声称漏洞一定可利用。</li><li>链上只保存哈希、时间戳和提交钱包，不公开源码或报告正文。</li><li>未配置外部服务时保持核心扫描可运行，避免隐藏依赖。</li><li>真实部署地址、公开仓库和线上 Demo 尚未提供，因此不作上线声明。</li></ul></div></div>
+
+  <h2>核心功能</h2><ul><li><strong>源码风险扫描：</strong>识别 <code>tx.origin</code>、<code>delegatecall</code>、未保护的高权限函数、低级调用和重入相关顺序信号。</li><li><strong>Release Risk Brief：</strong>把规则发现转换为带严重度、证据、潜在影响、修复建议和限制说明的结构化输出。</li><li><strong>合约风险画像：</strong>读取 Sepolia 代码、余额、部署信息、交互记录与 EIP-1967 implementation slot，并区分 confirmed、heuristic 和 unavailable。</li><li><strong>Change Review：</strong>对比基线与候选 Solidity 源码，标出新增函数、权限面变化、升级入口与必须人工确认的检查项。</li><li><strong>可篡改证据记录：</strong>通过 ethers.js 把源码哈希与简报哈希写入 AnalysisRegistry；报告内容继续保留在链下。</li><li><strong>离线降级：</strong>缺少 OpenAI 密钥时使用规则结果生成确定性简报；缺少 RPC 时不伪装成实时链上数据。</li></ul>
+
+  <h2>系统架构</h2><div class="architecture"><div class="arch-row"><span class="arch-node accent">Next.js Workspace</span><span class="arch-arrow">REST →</span><span class="arch-node">FastAPI</span><span class="arch-arrow">→</span><span class="arch-node data">PostgreSQL</span></div><div class="arch-row"><span class="arch-node">Rule Scanner</span><span class="arch-arrow">+</span><span class="arch-node">Privilege / Proxy Analysis</span><span class="arch-arrow">→</span><span class="arch-node accent">Structured AI Brief</span></div><div class="arch-row"><span class="arch-node">ethers.js Wallet</span><span class="arch-arrow">→</span><span class="arch-node data">Sepolia</span><span class="arch-arrow">→</span><span class="arch-node">AnalysisRegistry</span></div><p class="arch-caption">报告正文与源码保存在链下；测试网合约只登记哈希引用、时间戳与分析者钱包。</p></div>
+
+  <h2>技术难点与解决方案</h2><div class="challenge-list"><div class="challenge"><h3>LLM 输出不能成为未经约束的安全结论</h3><p>先由确定性规则产生证据，再通过严格 JSON Schema 生成简报；系统提示禁止声称完整性、可利用性或安全保证，并在没有模型密钥时回退到规则驱动结果。</p></div><div class="challenge"><h3>链上、源码与外部 API 的可信度不同</h3><p>每类信号携带 evidence type、confidence 和 data status。RPC 链 ID 必须是 11155111；Explorer 或 RPC 缺失时返回 unavailable，而不是补造数据。</p></div><div class="challenge"><h3>证明审查记录，同时避免把敏感内容上链</h3><p>对规范化源码和结构化简报分别计算哈希，合约只保存引用。这样能验证对应关系，同时控制 gas 成本和源码/报告暴露风险。</p></div><div class="challenge"><h3>升级审查不能只比较文本</h3><p>Change Review 聚焦新增高权限入口、低级调用与升级相关函数，并强制保留“检查存储布局兼容性”等人工步骤，明确静态差异分析的能力边界。</p></div></div>
+
+  <h2>验证方法</h2><ul><li>FastAPI 测试覆盖结构化分析响应、Sandbox Change Review、Sepolia-only 校验、源码绑定和 EIP-1967 地址解析。</li><li>规则扫描测试验证 <code>TX_ORIGIN</code>、<code>DELEGATECALL</code>、未保护权限与重入模式信号。</li><li>Hardhat 测试覆盖哈希记录、分析者钱包保存和零哈希拒绝。</li><li>本次作品集整理检查了测试代码与实现对应关系；由于当前运行环境未安装项目 Python 测试依赖，未在此处声称测试已重新执行通过。</li></ul>
+
+  <h2>下一步</h2><ol><li>初始化公开 Git 仓库并补充可审阅的提交历史。</li><li>部署 AnalysisRegistry 到 Sepolia，公开合约地址与示例交易。</li><li>部署 Web/API/PostgreSQL，增加端到端测试、可观测性与失败告警。</li><li>用经过授权的真实合约样本评估误报、漏报与人工审查时间变化。</li></ol>
+</article><aside class="sidebar reveal"><h3>项目摘要</h3><dl><dt>Frontend</dt><dd>Next.js 14 · React · TypeScript · Tailwind</dd><dt>Backend</dt><dd>FastAPI · SQLAlchemy · Pydantic</dd><dt>AI</dt><dd>OpenAI structured output · deterministic fallback</dd><dt>Web3</dt><dd>Solidity · Hardhat · ethers.js · Sepolia</dd><dt>Data</dt><dd>PostgreSQL / SQLite local fallback</dd><dt>Delivery</dt><dd>Docker Compose · Vercel/API deployment plan</dd></dl><div class="hero-actions"><a class="btn btn-disabled" aria-disabled="true" href="#">GitHub 待公开</a><a class="btn btn-disabled" aria-disabled="true" href="#">在线 Demo 待部署</a></div></aside></div></section>
+</main><div data-site-footer></div><script src="../assets/js/site.js"></script></body></html>
+
