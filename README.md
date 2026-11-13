@@ -51,18 +51,19 @@ npx serve dist
 
 1. 把图片放入 dist/assets/images/。
 2. 建议使用 WebP 或压缩 PNG，宽度 1440px 左右。
-3. 在对应项目页搜索“项目截图区域”或现有 img 标签。
+3. 在对应项目页找到现有 img 标签或 screenshot-grid 区块。
 4. 替换 src 和准确的 alt 文本。
 
-建议补充：
+当前已收录：
 
-- FoodShare：首页、AI Chef、会话安全、管理端。
-- StyleSphere：结账、支付状态、退款审核、异常状态。
-- ReqTest：需求追踪、测试执行、失败诊断、评估图表。
+- FoodShare：菜谱详情、AI Chef。
+- ReqTest：产品首页、评估仪表盘。
+
+后续如有合适素材，可优先补充 StyleSphere 的结账与支付状态页面；没有合适截图时不保留空白占位。
 
 ### 替换 Demo 视频
 
-推荐把视频上传到 YouTube、Vimeo 或 Loom，再把“Demo 视频区域”占位替换为嵌入代码。避免把大视频直接提交到 Git。
+推荐把视频上传到 YouTube、Vimeo 或 Loom，再在对应项目页加入嵌入代码。避免把大视频直接提交到 Git。
 
 ### 替换 GitHub 与在线 Demo 链接
 
@@ -115,7 +116,8 @@ npx serve dist
 - GitHub 公开主页 URL。
 - LinkedIn URL。
 - 经过隐私处理的 PDF 简历。
-- 每个项目 3–5 张真实截图。
+- StyleSphere 的真实产品截图（如可公开）。
+- 独立个人项目的真实产品截图（项目完成后）。
 - 每个项目 60–90 秒 Demo 视频。
 - FoodShare 最终 AWS / Nginx / uWSGI / HTTPS 运行证据。
 - StyleSphere 区块链模块的代码位置、合约、交易流程、测试和个人提交证据。
