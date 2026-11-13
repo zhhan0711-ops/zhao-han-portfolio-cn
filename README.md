@@ -57,7 +57,7 @@ npx serve dist
 当前已收录：
 
 - ChainTrust：产品首页、风险简报、发现详情、合约画像、变更审查与登记页。
-- FoodShare：菜谱详情、AI Chef。
+- FoodShare：菜谱详情、AI Chef，以及脱敏后的 Nginx 与 systemd 部署验证。
 - ReqTest：产品首页、评估仪表盘。
 
 后续如有合适素材，可优先补充 StyleSphere 的结账与支付状态页面；没有合适截图时不保留空白占位。
@@ -119,7 +119,6 @@ npx serve dist
 - 经过隐私处理的 PDF 简历。
 - StyleSphere 的真实产品截图（如可公开）。
 - 每个项目 60–90 秒 Demo 视频。
-- FoodShare 最终 AWS / Nginx / uWSGI / HTTPS 运行证据。
 - StyleSphere 区块链模块的代码位置、合约、交易流程、测试和个人提交证据。
 - ReqTest 中你的具体提交、模块、PR 或团队贡献说明。
 - 可公开的团队项目仓库或经过授权的代码样例。
