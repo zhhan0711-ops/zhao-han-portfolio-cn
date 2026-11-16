@@ -16,6 +16,12 @@
 
 - 开源仓库：[zhhan0711-ops/chaintrust](https://github.com/zhhan0711-ops/chaintrust)
 
+### ProofLedger
+
+独立完成的 AI 争议证据与人工审查工作台。使用 Next.js、FastAPI、PostgreSQL、OpenAI structured output 与确定性规则，把合成或匿名化订单、物流、消息和退款申请组织为可追溯证据，并在人工确认后生成版本化 Case Brief。
+
+- 开源仓库：[zhhan0711-ops/proofledger](https://github.com/zhhan0711-ops/proofledger)
+
 ### FoodShare
 
 Django 全栈食谱社区与 AI Chef 团队项目，覆盖认证授权、内容发布、REST API、社区互动，以及 AWS EC2、Nginx、uWSGI、HTTPS 与 systemd 部署验证。
@@ -32,7 +38,7 @@ Django 全栈食谱社区与 AI Chef 团队项目，覆盖认证授权、内容�
 
 - 首页：个人定位与精选项目
 - About：背景、教育经历和求职方向
-- Projects：四个完整项目案例
+- Projects：五个完整项目案例
 - Skills：后端、全栈、AI、数据与 Web3 技能
 - Resume：在线简历
 - Contact：联系方式

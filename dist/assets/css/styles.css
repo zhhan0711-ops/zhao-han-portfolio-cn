@@ -133,6 +133,14 @@ button, input, textarea { font: inherit; }
 .mock-grid span { min-height: 84px; display: grid; place-items: center; border-radius: 12px; background: #dae5d4; font-size: 25px; }
 .placeholder-visual { display: grid; place-items: center; text-align: center; padding: 40px; background: linear-gradient(145deg, rgba(96,165,250,.08), rgba(196,181,253,.12)); }
 .placeholder-visual code { display: block; margin-bottom: 15px; color: var(--purple); font-size: 36px; }
+.proofledger-visual { display: grid; place-items: center; padding: 48px 32px; background: radial-gradient(circle at 18% 22%, rgba(34,211,238,.16), transparent 34%), linear-gradient(145deg,#080d18,#12162a); }
+.proof-flow { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; max-width: 620px; }
+.proof-flow span { padding: 12px 14px; border: 1px solid rgba(34,211,238,.35); border-radius: 10px; background: rgba(13,24,40,.92); color: #d8f7ff; font: 11px var(--mono); text-align: center; box-shadow: 0 12px 32px rgba(0,0,0,.18); }
+.proof-flow b { color: var(--purple); font: 16px var(--mono); }
+.proofledger-cover { padding: clamp(34px, 6vw, 72px) clamp(20px, 5vw, 56px) 0; background: radial-gradient(circle at 20% 10%, rgba(34,211,238,.12), transparent 32%), #080d14; }
+.proofledger-cover .proof-flow { max-width: none; min-height: 180px; }
+.proofledger-cover .proof-flow span { padding: 17px 20px; font-size: 12px; }
+.proofledger-cover .case-cover-caption { margin: 44px calc(clamp(20px, 5vw, 56px) * -1) 0; border-top: 1px solid var(--line); }
 
 .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .value-card { padding: 27px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.025); }

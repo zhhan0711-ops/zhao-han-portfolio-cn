@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ProofLedger AI 争议证据与人工审查工作台个人项目案例。">
+  <title>ProofLedger 项目案例｜赵涵</title><link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body data-page="case" data-root=".." id="top"><a class="skip-link" href="#main">跳到主要内容</a><div data-site-header></div><main id="main">
+<section class="case-hero"><div class="container"><div class="case-breadcrumb"><a href="../projects.html">Projects</a> / ProofLedger</div><p class="kicker reveal" style="margin-top:30px">Independent · Full-stack / AI / Evidence Workflow</p><h1 class="reveal">ProofLedger：让争议处理建立在可追溯证据与人工确认之上</h1><p class="case-summary reveal">面向“未收到商品”争议的沙箱证据工作台。系统导入合成或匿名化订单、物流、消息和退款申请，通过确定性规则完成关联与审查排序，再生成带证据引用的 AI 建议；只有经过人工复核，才能形成版本化 Case Brief。</p><div class="case-meta reveal"><div><span>项目类型</span><strong>独立个人项目</strong></div><div><span>角色</span><strong>产品 / 全栈 / AI / 数据</strong></div><div><span>当前状态</span><strong>开源本地原型</strong></div><div><span>技术栈</span><strong>Next.js · FastAPI · PostgreSQL</strong></div></div></div></section>
+
+<div class="container case-cover proofledger-cover reveal" role="img" aria-label="ProofLedger 从数据导入到 Case Brief 的系统流程图"><div class="proof-flow"><span>CSV / Manual Case</span><b>→</b><span>Validation & Versioning</span><b>→</b><span>Evidence Linking</span><b>→</b><span>Deterministic Score</span><b>→</b><span>AI Advisory</span><b>→</b><span>Human Review</span><b>→</b><span>Case Brief vN</span></div><div class="case-cover-caption"><span>从原始数据到人工确认快照</span><span>系统流程图</span></div></div>
+
+<section class="section-tight"><div class="container page-grid"><article class="prose reveal">
+  <h2>项目背景与目标</h2><p>争议处理常把订单、物流事件、客户消息和退款申请分散在不同记录中，导致评审者难以确认结论来自哪些证据。ProofLedger 的目标不是自动裁决，而是把数据导入、证据关联、规则分析、AI 建议和人工复核组织成一个有边界、可追踪的工作流。</p><div class="notice"><strong>产品边界：</strong>当前仅处理合成或匿名化数据，不连接 Shopify、Stripe、承运商或支付平台；不会自动退款、拒付、处罚、付款或发送外部通知。应用层审计记录采用追加式写入，但不宣称具备不可篡改性。</div>
+
+  <h2>我的个人职责</h2><div class="scope-split"><div class="scope-card mine"><h3>独立完成</h3><ul><li>定义产品目标、沙箱数据范围和人工决策边界。</li><li>设计 Next.js、FastAPI、SQLAlchemy、Alembic 与 PostgreSQL 架构。</li><li>实现 CSV 预览、字段映射、逐行校验、哈希去重与版本化记录。</li><li>实现证据关联、冲突状态、完整度评分和人工审查队列。</li><li>实现确定性规则、结构化 AI 输出、证据引用校验与受控读取工具。</li><li>实现人工复核、版本化 Case Brief、JSON 导出和追加式审计事件。</li></ul></div><div class="scope-card"><h3>刻意控制的范围</h3><ul><li>评分只决定审查顺序，不代表退款或拒绝结论。</li><li>AI 只能基于当前案件证据给出建议，不能调用支付或通知工具。</li><li>模糊、未匹配和冲突关联不会进入正常审查队列。</li><li>线上 Demo 尚未部署，因此不作生产可用声明。</li></ul></div></div>
+
+  <h2>核心功能</h2><ul><li><strong>数据导入：</strong>支持 orders、shipment events、customer messages 和 refund requests 四类 CSV，采用 Preview → Confirm 两阶段流程。</li><li><strong>可追溯版本：</strong>保存文件 SHA-256、行级校验、重复来源、规范化内容哈希和版本化业务记录。</li><li><strong>证据关联：</strong>按订单引用、物流单号和客户引用建立确定性关联，并显式保留 linked、ambiguous、unmatched 与 conflicting 状态。</li><li><strong>审查队列：</strong>根据证据完整度生成可解释的评分明细与优先级；筛选和排序仅用于人工工作安排。</li><li><strong>AI 建议：</strong>结构化输出必须引用案件内证据，并明确矛盾、缺失证据、限制和需要人工确认的下一步。</li><li><strong>人工闭环：</strong>复核者可以确认生成摘要、要求更多证据或升级处理；只有确认路径会产生新的 Case Brief 版本。</li></ul>
+
+  <h2>系统架构</h2><div class="architecture"><div class="arch-row"><span class="arch-node accent">Next.js Workspace</span><span class="arch-arrow">REST →</span><span class="arch-node">FastAPI</span><span class="arch-arrow">→</span><span class="arch-node data">PostgreSQL</span></div><div class="arch-row"><span class="arch-node">Import & Linking</span><span class="arch-arrow">→</span><span class="arch-node accent">Deterministic Rules</span><span class="arch-arrow">+</span><span class="arch-node">Structured AI</span></div><div class="arch-row"><span class="arch-node">Review Queue</span><span class="arch-arrow">→</span><span class="arch-node accent">Human Review</span><span class="arch-arrow">→</span><span class="arch-node data">Case Brief + Audit</span></div><p class="arch-caption">规则与 AI 建议分层：确定性代码负责时间线、冲突、关联和评分；模型只总结已提供证据，并接受证据引用校验。</p></div>
+
+  <h2>技术难点与解决方案</h2><div class="challenge-list"><div class="challenge"><h3>导入不能直接污染业务事实</h3><p>把上传拆为预览与确认两阶段。预览只保存批次、行级校验和映射结果；确认后才创建版本化记录，并通过文件哈希与幂等键避免重复提交。</p></div><div class="challenge"><h3>跨来源关联可能不唯一</h3><p>采用确定性键与回退规则，保存关联方法和历史；对模糊、缺失或冲突结果单独分流，不让它们静默进入正常队列。</p></div><div class="challenge"><h3>AI 不能越过证据边界</h3><p>使用结构化契约和案件范围内的受控工具，拒绝未知 evidence ID，记录 Tool Trace，并强制 <code>human_review_required</code>。</p></div><div class="challenge"><h3>确认后的快照不能被后续导入改写</h3><p>Case Brief 保存确认时的版本化快照；新数据与新分析只产生后续版本，不覆盖已经确认的内容。</p></div></div>
+
+  <h2>验证方法</h2><ul><li>仓库包含 40 个 API 测试函数，覆盖时间线、冲突检测、证据范围、版本化分析、人工复核、导入、去重、关联、评分、Case Brief 快照和受控工具读取。</li><li>Golden Set 使用确定性 Fake Provider 检查 schema compliance、证据引用有效性、矛盾与缺失证据召回、人工复核要求和幻觉边界；它不是对真实模型准确率的证明。</li><li>本次作品集更新尝试在现有本地虚拟环境运行测试，但环境缺少已在 <code>requirements.txt</code> 声明的 <code>python-multipart</code>，测试在收集阶段停止，因此不把测试写成“本次重新通过”。</li></ul>
+
+  <h2>下一步</h2><ol><li>补充可公开的真实界面截图与演示视频。</li><li>部署 Web、API 与 PostgreSQL，增加端到端测试和运行监控。</li><li>在匿名化评审样本上测量关联准确性、误报和人工处理时间。</li><li>加入身份认证与角色权限后，再评估多用户审查场景。</li></ol>
+</article><aside class="sidebar reveal"><h3>项目摘要</h3><dl><dt>Frontend</dt><dd>Next.js 15 · React 19 · TypeScript · Tailwind</dd><dt>Backend</dt><dd>FastAPI · SQLAlchemy · Alembic</dd><dt>Data</dt><dd>PostgreSQL · versioned imports · SHA-256</dd><dt>AI</dt><dd>OpenAI structured output · deterministic fallback</dd><dt>Workflow</dt><dd>Evidence linking · human review · Case Brief</dd><dt>Delivery</dt><dd>Docker Compose · open-source repository</dd></dl><div class="hero-actions"><a class="btn btn-primary" href="https://github.com/zhhan0711-ops/proofledger" target="_blank" rel="noopener noreferrer">查看 GitHub 源码 ↗</a><a class="btn btn-disabled" aria-disabled="true" href="#">在线 Demo 待部署</a></div></aside></div></section>
+</main><div data-site-footer></div><script src="../assets/js/site.js"></script></body></html>
+
