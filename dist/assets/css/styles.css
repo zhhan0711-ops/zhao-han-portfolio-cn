@@ -71,7 +71,8 @@ button, input, textarea { font: inherit; }
 .mobile-nav a { text-decoration: none; color: var(--muted); padding: 10px 0; border-bottom: 1px solid var(--line); }
 
 .page-hero { padding: 104px 0 72px; }
-.home-hero { min-height: calc(100vh - 72px); display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 72px; padding-block: 72px; }
+.home-hero { min-height: calc(100vh - 72px); display: grid; grid-template-columns: 1fr; align-items: center; padding-block: 72px; }
+.home-hero > .reveal { max-width: 980px; }
 .kicker { display: flex; align-items: center; gap: 10px; color: var(--cyan); font: 700 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .kicker::before { content: ""; width: 22px; height: 1px; background: currentColor; }
 .home-hero h1, .page-hero h1 {
@@ -92,11 +93,6 @@ button, input, textarea { font: inherit; }
 .btn-disabled { opacity: .55; cursor: default; pointer-events: none; }
 .hero-statline { display: flex; flex-wrap: wrap; gap: 12px 24px; color: var(--muted); font-size: 13px; }
 .hero-statline b { color: var(--text); }
-
-.portrait-card { position: relative; max-width: 390px; justify-self: end; padding: 12px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(96,165,250,.11), rgba(34,211,238,.02)); border-radius: 30px; }
-.portrait-card::before { content: "</>"; position: absolute; right: -18px; top: 28px; width: 70px; height: 70px; display: grid; place-items: center; border-radius: 19px; color: #061019; background: var(--green); font: 800 18px var(--mono); transform: rotate(8deg); box-shadow: 0 18px 48px rgba(0,0,0,.28); }
-.portrait-card img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 25%; border-radius: 21px; filter: saturate(.84) contrast(1.04); }
-.portrait-meta { display: flex; justify-content: space-between; gap: 20px; padding: 15px 7px 4px; color: var(--muted); font: 11px var(--mono); }
 
 .section { padding: 92px 0; }
 .section-tight { padding: 58px 0; }
@@ -257,8 +253,7 @@ button, input, textarea { font: inherit; }
 @media (max-width: 900px) {
   .desktop-nav { display: none; }
   .menu-btn { display: grid; place-items: center; }
-  .home-hero { grid-template-columns: 1fr; gap: 42px; padding-block: 58px; }
-  .portrait-card { justify-self: start; width: min(78%, 380px); }
+  .home-hero { padding-block: 58px; }
   .project-feature { grid-template-columns: 1fr; }
   .project-feature:nth-child(even) .project-visual { order: 0; }
   .project-visual { min-height: 330px; }
