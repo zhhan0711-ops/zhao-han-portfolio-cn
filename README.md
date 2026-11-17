@@ -8,6 +8,8 @@
 
 网站现已公开，无需登录即可访问。
 
+GitHub 主页：[github.com/zhhan0711-ops](https://github.com/zhhan0711-ops)
+
 ## 重点项目
 
 ### ChainTrust

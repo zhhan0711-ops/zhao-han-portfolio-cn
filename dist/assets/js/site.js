@@ -46,6 +46,7 @@ if (footer) {
         <div><h2>让我们一起把想法做成可靠的软件。</h2><p>后端开发 · 全栈开发 · AI Application / LLM Agent</p></div>
         <div class="footer-links">
           <a href="mailto:zhhan0711@gmail.com">Email</a>
+          <a href="https://github.com/zhhan0711-ops" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="${root}/resume.html">简历</a>
           <a href="${root}/projects.html">项目</a>
           <a href="#top">回到顶部 ↑</a>
